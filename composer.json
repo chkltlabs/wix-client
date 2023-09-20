@@ -1,0 +1,29 @@
+{
+    "name": "chkltlabs/wix-client",
+    "description": "A fluent interface for the Wix API",
+    "type": "library",
+    "require": {
+        "nimbly/shuttle": "^0.4",
+        "psr/http-client": "^1.0",
+        "psr/http-message": "^1.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Chkltlabs\\WixClient\\": "src/",
+            "Chkltlabs\\WixClient\\Tests\\": "tests/",
+            "Chkltlabs\\WixClient\\Traits\\": "src/Traits"
+
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "authors": [
+        {
+            "name": "chkltlabs",
+            "email": "chkltlabs@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
