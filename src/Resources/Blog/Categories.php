@@ -6,7 +6,7 @@ use Chkltlabs\WixClient\Resources\AbstractResource;
 
 class Categories extends AbstractResource 
 {
-    public function list(array $params = [])
+    public function list(array $params = []): object
     {
         return $this->sendRequest(
             'get',
@@ -15,12 +15,12 @@ class Categories extends AbstractResource
         );
     }
 
-    public function get(string $categoryId, array $params = [])
+    public function get(string $categoryId, array $params = []): object
     {
         return $this->getByID($categoryId, $params);
     }
 
-    public function getByID(string $categoryId, array $params = [])
+    public function getByID(string $categoryId, array $params = []): object
     {
         return $this->sendRequest(
             'get',
@@ -29,7 +29,7 @@ class Categories extends AbstractResource
         );
     }
 
-    public function getBySlug(string $slug, array $params = [])
+    public function getBySlug(string $slug, array $params = []): object
     {
         return $this->sendRequest(
             'get',
@@ -38,7 +38,7 @@ class Categories extends AbstractResource
         );
     }
 
-    public function create(array $params = [])
+    public function create(array $params = []): object
     {
         return $this->sendRequest(
             'post',
@@ -47,7 +47,7 @@ class Categories extends AbstractResource
         );
     }
 
-    public function update(string $categoryId, array $params = [])
+    public function update(string $categoryId, array $params = []): object
     {
         return $this->sendRequest(
             'patch',
@@ -56,7 +56,7 @@ class Categories extends AbstractResource
         );
     }
 
-    public function delete(string $categoryId, array $params = [])
+    public function delete(string $categoryId, array $params = []): object
     {
         return $this->sendRequest(
             'delete',
@@ -65,7 +65,7 @@ class Categories extends AbstractResource
         );
     }
 
-    public function query(array $params = [])
+    public function query(array $params = []): object
     {
         return $this->sendRequest(
             'post',

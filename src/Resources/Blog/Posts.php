@@ -6,7 +6,7 @@ use Chkltlabs\WixClient\Resources\AbstractResource;
 
 class Posts extends AbstractResource
 {
-    public function list(array $params = [])
+    public function list(array $params = []): object
     {
         return $this->sendRequest(
             'get',
@@ -14,12 +14,12 @@ class Posts extends AbstractResource
             $params
         );
     }
-    public function get(string $tagId, array $params = [])
+    public function get(string $tagId, array $params = []): object
     {
         return $this->getById($tagId, $params);
     }
 
-    public function getById(string $postId, array $params = [])
+    public function getById(string $postId, array $params = []): object
     {
         return $this->sendRequest(
             'get',
@@ -28,7 +28,7 @@ class Posts extends AbstractResource
         );
     }
 
-    public function getBySlug(string $slug, array $params = [])
+    public function getBySlug(string $slug, array $params = []): object
     {
         return $this->sendRequest(
             'get',
@@ -37,7 +37,7 @@ class Posts extends AbstractResource
         );
     }
 
-    public function query(array $params = [])
+    public function query(array $params = []): object
     {
         return $this->sendRequest(
             'post',
@@ -46,7 +46,7 @@ class Posts extends AbstractResource
         );
     }
 
-    public function metrics(string $postId, array $params = [])
+    public function metrics(string $postId, array $params = []): object
     {
         return $this->sendRequest(
             'get',
@@ -55,7 +55,7 @@ class Posts extends AbstractResource
         );
     }
 
-    public function count(array $params = [])
+    public function count(array $params = []): object
     {
         return $this->sendRequest(
             'get',
@@ -64,7 +64,7 @@ class Posts extends AbstractResource
         );
     }
 
-    public function total(array $params = [])
+    public function total(array $params = []): object
     {
         return $this->sendRequest(
             'get',

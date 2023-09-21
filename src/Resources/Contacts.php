@@ -12,7 +12,7 @@ class Contacts extends AbstractResource
 {
     use HasCachedResources;
 
-    public function list(array $params = [])
+    public function list(array $params = []): object
     {
         return $this->sendRequest(
             'get',
@@ -21,7 +21,7 @@ class Contacts extends AbstractResource
         );
     }
 
-    public function get(string $contactId, array $params = [])
+    public function get(string $contactId, array $params = []): object
     {
         return $this->sendRequest(
             'get',
@@ -30,7 +30,7 @@ class Contacts extends AbstractResource
         );
     }
 
-    public function create(array $params = [])
+    public function create(array $params = []): object
     {
         return $this->sendRequest(
             'post',
@@ -39,7 +39,7 @@ class Contacts extends AbstractResource
         );
     }
 
-    public function update(string $contactId, array $params = [])
+    public function update(string $contactId, array $params = []): object
     {
         return $this->sendRequest(
             'patch',
@@ -48,7 +48,7 @@ class Contacts extends AbstractResource
         );
     }
 
-    public function delete(string $contactId, array $params = [])
+    public function delete(string $contactId, array $params = []): object
     {
         return $this->sendRequest(
             'delete',
@@ -57,7 +57,7 @@ class Contacts extends AbstractResource
         );
     }
     
-    public function merge(string $targetContactId, array $params = [])
+    public function merge(string $targetContactId, array $params = []): object
     {
         return $this->sendRequest(
             'post',
@@ -66,7 +66,7 @@ class Contacts extends AbstractResource
         );
     }
     
-    public function previewMerge(string $targetContactId, array $params = [])
+    public function previewMerge(string $targetContactId, array $params = []): object
     {
         return $this->sendRequest(
             'post',
@@ -75,7 +75,7 @@ class Contacts extends AbstractResource
         );
     }
     
-    public function label(string $contactId, array $params = [])
+    public function label(string $contactId, array $params = []): object
     {
         return $this->sendRequest(
             'post',
@@ -84,7 +84,7 @@ class Contacts extends AbstractResource
         );
     }
     
-    public function unlabel(string $contactId, array $params = [])
+    public function unlabel(string $contactId, array $params = []): object
     {
         return $this->sendRequest(
             'delete',
@@ -93,7 +93,7 @@ class Contacts extends AbstractResource
         );
     }
 
-    public function query(array $params = [])
+    public function query(array $params = []): object
     {
         return $this->sendRequest(
             'post',

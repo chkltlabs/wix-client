@@ -6,7 +6,7 @@ use Chkltlabs\WixClient\Resources\AbstractResource;
 
 class Bulk extends AbstractResource
 {
-    public function list(array $params = [])
+    public function list(array $params = []): object
     {
         return $this->sendRequest(
             'get',
@@ -15,7 +15,7 @@ class Bulk extends AbstractResource
         );
     }
 
-    public function get(string $jobId, array $params = [])
+    public function get(string $jobId, array $params = []): object
     {
         return $this->sendRequest(
             'get',
@@ -24,7 +24,7 @@ class Bulk extends AbstractResource
         );
     }
 
-    public function update(array $params = [])
+    public function update(array $params = []): object
     {
         return $this->sendRequest(
             'post',
@@ -33,7 +33,7 @@ class Bulk extends AbstractResource
         );
     }
 
-    public function delete(array $params = [])
+    public function delete(array $params = []): object
     {
         return $this->sendRequest(
             'post',
@@ -42,7 +42,7 @@ class Bulk extends AbstractResource
         );
     }
 
-    public function addRemoveLabels(array $params = [])
+    public function addRemoveLabels(array $params = []): object
     {
         return $this->sendRequest(
             'post',

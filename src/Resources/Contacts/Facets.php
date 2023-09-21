@@ -6,7 +6,7 @@ use Chkltlabs\WixClient\Resources\AbstractResource;
 
 class Facets extends AbstractResource
 {
-    public function list(array $params = [])
+    public function list(array $params = []): object
     {
         return $this->sendRequest(
             'get',
@@ -15,7 +15,7 @@ class Facets extends AbstractResource
         );
     }
 
-    public function query(array $params = [])
+    public function query(array $params = []): object
     {
         return $this->sendRequest(
             'post',

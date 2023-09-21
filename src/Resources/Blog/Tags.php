@@ -6,12 +6,12 @@ use Chkltlabs\WixClient\Resources\AbstractResource;
 
 class Tags extends AbstractResource 
 {
-    public function get(string $tagId, array $params = [])
+    public function get(string $tagId, array $params = []): object
     {
         return $this->getById($tagId, $params);
     }
 
-    public function getById(string $tagId, array $params = [])
+    public function getById(string $tagId, array $params = []): object
     {
         return $this->sendRequest(
             'get',
@@ -20,7 +20,7 @@ class Tags extends AbstractResource
         );
     }
 
-    public function getByLabel(string $label, array $params = [])
+    public function getByLabel(string $label, array $params = []): object
     {
         return $this->sendRequest(
             'get',
@@ -29,7 +29,7 @@ class Tags extends AbstractResource
         );
     }
 
-    public function getBySlug(string $slug, array $params = [])
+    public function getBySlug(string $slug, array $params = []): object
     {
         return $this->sendRequest(
             'get',
@@ -38,7 +38,7 @@ class Tags extends AbstractResource
         );
     }
 
-    public function delete(string $tagId, array $params = [])
+    public function delete(string $tagId, array $params = []): object
     {
         return $this->sendRequest(
             'delete',
@@ -49,11 +49,11 @@ class Tags extends AbstractResource
 
      /**
      * !!! NOTE: THIS ENDPOINT IS A DEV PREVIEW AND MAY CHANGE !!! 
-     * !!! REF: https://dev.wix.com/docs/rest/api-reference/wix-blog/blog/tags/query-tags !!! 
-     * 
+     * !!! REF: https://dev.wix.com/docs/rest/api-reference/wix-blog/blog/tags/query-tags !!!
+     *
      * @param array $params
      */
-    public function query(array $params = [])
+    public function query(array $params = []): object
     {
         return $this->sendRequest(
             'post',

@@ -6,7 +6,7 @@ use Chkltlabs\WixClient\Resources\AbstractResource;
 
 class Drafts extends AbstractResource 
 {
-    public function list(array $params = [])
+    public function list(array $params = []): object
     {
         return $this->sendRequest(
             'get',
@@ -15,7 +15,7 @@ class Drafts extends AbstractResource
         );
     }
 
-    public function get(string $draftPostId, array $params = [])
+    public function get(string $draftPostId, array $params = []): object
     {
         return $this->sendRequest(
             'get',
@@ -24,7 +24,7 @@ class Drafts extends AbstractResource
         );
     }
 
-    public function create(array $params = [])
+    public function create(array $params = []): object
     {
         return $this->sendRequest(
             'post',
@@ -33,7 +33,7 @@ class Drafts extends AbstractResource
         );
     }
 
-    public function update(string $draftPostId, array $params = [])
+    public function update(string $draftPostId, array $params = []): object
     {
         return $this->sendRequest(
             'patch',
@@ -42,7 +42,7 @@ class Drafts extends AbstractResource
         );
     }
 
-    public function bulkUpdate(array $params = [])
+    public function bulkUpdate(array $params = []): object
     {
         return $this->sendRequest(
             'patch',
@@ -51,7 +51,7 @@ class Drafts extends AbstractResource
         );
     }
 
-    public function delete(string $draftPostId, array $params = [])
+    public function delete(string $draftPostId, array $params = []): object
     {
         return $this->sendRequest(
             'delete',
@@ -60,7 +60,7 @@ class Drafts extends AbstractResource
         );
     }
 
-    public function listDeleted(array $params = [])
+    public function listDeleted(array $params = []): object
     {
         return $this->sendRequest(
             'get',
@@ -69,7 +69,7 @@ class Drafts extends AbstractResource
         );
     }
 
-    public function getDeleted(string $draftPostId, array $params = [])
+    public function getDeleted(string $draftPostId, array $params = []): object
     {
         return $this->sendRequest(
             'get',
@@ -78,7 +78,7 @@ class Drafts extends AbstractResource
         );
     }
 
-    public function removeDeleted(string $draftPostId, array $params = [])
+    public function removeDeleted(string $draftPostId, array $params = []): object
     {
         return $this->sendRequest(
             'delete',
@@ -87,7 +87,7 @@ class Drafts extends AbstractResource
         );
     }
 
-    public function restoreDeleted(string $draftPostId, array $params = [])
+    public function restoreDeleted(string $draftPostId, array $params = []): object
     {
         return $this->sendRequest(
             'post',
@@ -96,7 +96,7 @@ class Drafts extends AbstractResource
         );
     }
 
-    public function query(array $params = [])
+    public function query(array $params = []): object
     {
         return $this->sendRequest(
             'post',
@@ -105,7 +105,7 @@ class Drafts extends AbstractResource
         );
     }
 
-    public function publish(string $draftPostId, array $params = [])
+    public function publish(string $draftPostId, array $params = []): object
     {
         return $this->sendRequest(
             'post',

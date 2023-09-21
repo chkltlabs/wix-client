@@ -49,7 +49,7 @@ trait HasCachedResources
 		return $this->resource_cache[$resource];
     }
 
-	private function getResourceNamespace()
+	private function getResourceNamespace(): string
 	{
 		$class = get_class($this);
 		$parts = explode('\\', $class);

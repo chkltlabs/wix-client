@@ -7,6 +7,7 @@ use Capsule\Request;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Shuttle\Shuttle;
 use UnexpectedValueException;
 
 abstract class AbstractResource
@@ -50,7 +51,7 @@ abstract class AbstractResource
 	 * @param string $method
 	 * @param string $path
 	 * @param array<array-key,mixed> $params
-	 * @throws PlaidRequestException
+	 * @throws WixRequestException
 	 * @throws UnexpectedValueException
 	 * @return object
 	 */
@@ -110,5 +111,19 @@ abstract class AbstractResource
                 'Content-Type' => 'application/json',
             ])
         );
+	}
+
+	/**
+	 * Get the ClientInterface instance being used to make HTTP calls.
+	 *
+	 * @return ClientInterface
+	 */
+	public function getHttpClient(): ClientInterface
+	{
+		if( empty($this->httpClient) ){
+			$this->httpClient = new Shuttle();
+		}
+
+		return $this->httpClient;
 	}
 }
