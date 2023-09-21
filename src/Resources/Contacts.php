@@ -5,8 +5,10 @@ namespace Chkltlabs\WixClient\Resources;
 use Chkltlabs\WixClient\Traits\HasCachedResources;
 
 /**
- * @property Chkltlabs\WixClient\Resources\Contact\Placeholder $spoot
- * 
+ * @property Chkltlabs\WixClient\Resources\Contact\Bulk $bulk
+ * @property Chkltlabs\WixClient\Resources\Contact\ExtendedFields $extendedFields
+ * @property Chkltlabs\WixClient\Resources\Contact\Facets $facets
+ * @property Chkltlabs\WixClient\Resources\Contact\Labels $labels
  */
 class Contacts extends AbstractResource 
 {

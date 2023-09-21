@@ -4,13 +4,13 @@ namespace Chkltlabs\WixClient\Resources\Contacts;
 
 use Chkltlabs\WixClient\Resources\AbstractResource;
 
-class Labels extends AbstractResource
+class ExtendedFields extends AbstractResource
 {
     public function list(array $params = []): object
     {
         return $this->sendRequest(
             'get',
-            "contacts/v4/labels",
+            "contacts/v4/extended-fields",
             $params
         );
     }
@@ -19,7 +19,7 @@ class Labels extends AbstractResource
     {
         return $this->sendRequest(
             'get',
-            "contacts/v4/labels/".$key,
+            "contacts/v4/extended-fields/".$key,
             $params
         );
     }
@@ -28,7 +28,7 @@ class Labels extends AbstractResource
     {
         return $this->sendRequest(
             'post',
-            "contacts/v4/labels",
+            "contacts/v4/extended-fields",
             $params
         );
     }
@@ -37,7 +37,7 @@ class Labels extends AbstractResource
     {
         return $this->sendRequest(
             'patch',
-            "contacts/v4/labels/".$key,
+            "contacts/v4/extended-fields/".$key,
             $params
         );
     }
@@ -46,7 +46,7 @@ class Labels extends AbstractResource
     {
         return $this->sendRequest(
             'delete',
-            "contacts/v4/labels/".$key,
+            "contacts/v4/extended-fields/".$key,
             $params
         );
     }
@@ -55,7 +55,7 @@ class Labels extends AbstractResource
     {
         return $this->sendRequest(
             'post',
-            "contacts/v4/labels/query",
+            "contacts/v4/extended-fields/query",
             $params
         );
     }
