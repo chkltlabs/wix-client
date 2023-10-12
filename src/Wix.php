@@ -22,6 +22,7 @@ class Wix
 	 */
 	protected $httpClient;
 
+	public string $api_host_url = 'https://www.wixapis.com';
 	/**
 	 * Resource instance cache.
 	 *
@@ -31,7 +32,6 @@ class Wix
 
     public function __construct(
         public string $api_key,
-        public string $api_host_url,
         public string $account_id,
         public string $site_id,
     )
