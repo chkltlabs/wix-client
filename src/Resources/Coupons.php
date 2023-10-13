@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use Chkltlabs\WixClient\Traits\HasCachedResources;
 
-class Contacts extends AbstractResource 
+class Coupons extends AbstractResource 
 {
     use HasCachedResources;
     

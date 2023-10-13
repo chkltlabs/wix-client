@@ -1,6 +1,6 @@
 <?php
 
-namespace Chkltlabs\WixClient\Objects;
+namespace Chkltlabs\WixClient\Entities\Objects;
 
 class Draft extends AbstractObject
 {
