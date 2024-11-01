@@ -69,7 +69,7 @@ class Categories extends AbstractResource
     {
         return $this->sendRequest(
             'post',
-            'v3/categories',
+            'v3/categories/query',
             $params
         );
     }
