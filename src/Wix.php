@@ -9,6 +9,9 @@ use Psr\Http\Client\ClientInterface;
 
 /**
  * @property Chkltlabs\WixClient\Resources\Blog $blog
+ * @property Chkltlabs\WixClient\Resources\Members $members
+ * @property Chkltlabs\WixClient\Resources\Ecom $ecom
+ * @property Chkltlabs\WixClient\Resources\WixData $wix_data
  * 
  */
 class Wix

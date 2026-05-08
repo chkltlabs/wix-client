@@ -18,6 +18,8 @@ abstract class TestCase extends PHPUnitTestCase
         $httpClient = new Shuttle([
             'handler' => new MockHandler([
                 function (Request $request) {
+                    parse_str($request->getUri()->getQuery(), $queryParams);
+                    $body = (string) $request->getBody();
 
                     $requestParams = [
                         'method' => $request->getMethod(),
@@ -25,7 +27,8 @@ abstract class TestCase extends PHPUnitTestCase
                         'scheme' => $request->getUri()->getScheme(),
                         'host' => $request->getUri()->getHost(),
                         'path' => $request->getUri()->getPath(),
-                        'params' => \json_decode($request->getBody()->getContents()),
+                        'query' => (object) $queryParams,
+                        'params' => ($body !== '' ? \json_decode($body) : null),
                     ];
 
                     return new Response(200, \json_encode($requestParams));

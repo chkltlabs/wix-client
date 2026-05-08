@@ -100,8 +100,13 @@ abstract class AbstractResource
 	 */
 	protected function buildRequest(string $method, string $path, array $params = []): RequestInterface
 	{
-        $path = \trim($this->api_host_url, '/').'/'.\trim($path, '/');
-        $path .= ( strtolower($method) == 'get' ? '?'.http_build_query($params) : '');
+        $path = \trim($this->api_host_url, '/').'/'.\ltrim($path, '/');
+        if( strtolower($method) == 'get' ){
+            $queryString = http_build_query($params);
+            if( !empty($queryString) ){
+                $path .= (\str_contains($path, '?') ? '&' : '?').$queryString;
+            }
+        }
         $body = ( strtolower($method) == 'get' ? null : \json_encode((object) $params));
         return new Request(
             $method,
