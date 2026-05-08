@@ -135,4 +135,37 @@ class TypedDomainOperationsTest extends TestCase
         self::assertSame('/domain-search/v2/check-domain-availability', $response->path);
         self::assertSame('example.com', $response->query->query);
     }
+
+    public function test_oauth_handcrafted_resource_uses_expected_path(): void
+    {
+        $wix = $this->getWixClient();
+
+        $response = $wix->oauth->accessTokenRequest(['grant_type' => 'authorization_code']);
+
+        self::assertSame('POST', $response->method);
+        self::assertSame('/oauth/access', $response->path);
+        self::assertSame('authorization_code', $response->params->grant_type);
+    }
+
+    public function test_pricing_handcrafted_resource_uses_expected_path(): void
+    {
+        $wix = $this->getWixClient();
+
+        $response = $wix->pricing->calculatePrice(['lineItems' => []]);
+
+        self::assertSame('POST', $response->method);
+        self::assertSame('/pricing/v1/calculate-price', $response->path);
+        self::assertSame([], (array) $response->params->lineItems);
+    }
+
+    public function test_redirect_session_handcrafted_resource_uses_expected_path(): void
+    {
+        $wix = $this->getWixClient();
+
+        $response = $wix->redirect_session->createRedirectSession(['target' => 'checkout']);
+
+        self::assertSame('POST', $response->method);
+        self::assertSame('/redirect-session/v1/redirect-session', $response->path);
+        self::assertSame('checkout', $response->params->target);
+    }
 }

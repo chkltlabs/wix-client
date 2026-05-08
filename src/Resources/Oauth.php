@@ -2,30 +2,11 @@
 
 namespace Chkltlabs\WixClient\Resources;
 
-use UnexpectedValueException;
-
-class Oauth extends Domain
+class Oauth extends AbstractResource
 {
-    protected string $segment = 'oauth';
-
-    private function executeOperation(string $httpMethod, string $path, array $pathParams = [], array $params = []): object
+    public function accessTokenRequest(array $params = []): object
     {
-        if (preg_match_all('/\{([^}]+)\}/', $path, $matches) > 0 && !empty($matches[1])) {
-            foreach ($matches[1] as $placeholder) {
-                $pathParamKey = explode('=', $placeholder)[0];
-                if (!array_key_exists($pathParamKey, $pathParams)) {
-                    throw new UnexpectedValueException('Missing required path param: ' . $pathParamKey);
-                }
-                $path = str_replace('{' . $placeholder . '}', rawurlencode((string) $pathParams[$pathParamKey]), $path);
-            }
-        }
-
-        return $this->request($httpMethod, $path, $params);
-    }
-
-    public function accessTokenRequest(array $pathParams = [], array $params = []): object
-    {
-        return $this->executeOperation('post', 'access', $pathParams, $params);
+        return $this->sendRequest('post', 'oauth/access', $params);
     }
 
 }
