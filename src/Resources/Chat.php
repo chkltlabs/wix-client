@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class Chat extends Domain
+class Chat extends AbstractResource
 {
     protected string $segment = 'chat';
 
@@ -20,7 +20,7 @@ class Chat extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'chat/' . ltrim($path, '/'), $params);
     }
 
     public function sendMessage(array $pathParams = [], array $params = []): object

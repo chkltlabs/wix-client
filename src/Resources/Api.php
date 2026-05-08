@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class Api extends Domain
+class Api extends AbstractResource
 {
     protected string $segment = 'api';
 
@@ -20,7 +20,7 @@ class Api extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'api/' . ltrim($path, '/'), $params);
     }
 
     public function update(array $pathParams = [], array $params = []): object

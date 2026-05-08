@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class V1 extends Domain
+class V1 extends AbstractResource
 {
     protected string $segment = 'v1';
 
@@ -20,7 +20,7 @@ class V1 extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'v1/' . ltrim($path, '/'), $params);
     }
 
     public function getQuota(array $pathParams = [], array $params = []): object

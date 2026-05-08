@@ -106,6 +106,9 @@ Generated from public docs currently available in `wix-incubator/wix-rest-docs`:
 - `V1`: 1
 - `WixData`: 44
 
+### Explicit Resource Status
+All top-level domain resources in `src/Resources` are now explicit custom classes extending `AbstractResource` (no remaining top-level `Domain` subclasses).
+
 
 ## Roadmap
 ### Implemented

@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class SiteMedia extends Domain
+class SiteMedia extends AbstractResource
 {
     protected string $segment = 'site-media';
 
@@ -20,7 +20,7 @@ class SiteMedia extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'site-media/' . ltrim($path, '/'), $params);
     }
 
     public function bulkDeleteFiles(array $pathParams = [], array $params = []): object

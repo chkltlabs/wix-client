@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class SiteFolders extends Domain
+class SiteFolders extends AbstractResource
 {
     protected string $segment = 'site-folders';
 
@@ -20,7 +20,7 @@ class SiteFolders extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'site-folders/' . ltrim($path, '/'), $params);
     }
 
     public function createFolder(array $pathParams = [], array $params = []): object

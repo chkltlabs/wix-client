@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class Faq extends Domain
+class Faq extends AbstractResource
 {
     protected string $segment = 'faq';
 
@@ -20,7 +20,7 @@ class Faq extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'faq/' . ltrim($path, '/'), $params);
     }
 
     public function bulkSetQuestionStatus(array $pathParams = [], array $params = []): object

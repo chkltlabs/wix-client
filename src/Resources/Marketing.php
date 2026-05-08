@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class Marketing extends Domain
+class Marketing extends AbstractResource
 {
     protected string $segment = 'marketing';
 
@@ -20,7 +20,7 @@ class Marketing extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'marketing/' . ltrim($path, '/'), $params);
     }
 
     public function deleteMarketingTag(array $pathParams = [], array $params = []): object

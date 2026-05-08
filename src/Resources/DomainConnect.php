@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class DomainConnect extends Domain
+class DomainConnect extends AbstractResource
 {
     protected string $segment = 'domain-connect';
 
@@ -20,7 +20,7 @@ class DomainConnect extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'domain-connect/' . ltrim($path, '/'), $params);
     }
 
     public function connectDomain(array $pathParams = [], array $params = []): object

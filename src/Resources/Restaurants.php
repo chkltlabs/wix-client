@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class Restaurants extends Domain
+class Restaurants extends AbstractResource
 {
     protected string $segment = 'restaurants';
 
@@ -20,7 +20,7 @@ class Restaurants extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'restaurants/' . ltrim($path, '/'), $params);
     }
 
     public function archiveMenu(array $pathParams = [], array $params = []): object

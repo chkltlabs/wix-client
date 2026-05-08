@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class Events extends Domain
+class Events extends AbstractResource
 {
     protected string $segment = 'events';
 
@@ -20,7 +20,7 @@ class Events extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'events/' . ltrim($path, '/'), $params);
     }
 
     public function changeCurrency(array $pathParams = [], array $params = []): object

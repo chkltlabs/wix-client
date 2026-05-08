@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class B2BSiteManagement extends Domain
+class B2BSiteManagement extends AbstractResource
 {
     protected string $segment = 'b2b-site-management';
 
@@ -20,7 +20,7 @@ class B2BSiteManagement extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'b2b-site-management/' . ltrim($path, '/'), $params);
     }
 
     public function transferSite(array $pathParams = [], array $params = []): object

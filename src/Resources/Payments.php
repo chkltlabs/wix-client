@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class Payments extends Domain
+class Payments extends AbstractResource
 {
     protected string $segment = 'payments';
 
@@ -20,7 +20,7 @@ class Payments extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'payments/' . ltrim($path, '/'), $params);
     }
 
     public function submitEvent(array $pathParams = [], array $params = []): object

@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class MarketingConsent extends Domain
+class MarketingConsent extends AbstractResource
 {
     protected string $segment = 'marketing-consent';
 
@@ -20,7 +20,7 @@ class MarketingConsent extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'marketing-consent/' . ltrim($path, '/'), $params);
     }
 
     public function bulkUpsertMarketingConsent(array $pathParams = [], array $params = []): object

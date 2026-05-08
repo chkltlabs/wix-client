@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class Locations extends Domain
+class Locations extends AbstractResource
 {
     protected string $segment = 'locations';
 
@@ -20,7 +20,7 @@ class Locations extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'locations/' . ltrim($path, '/'), $params);
     }
 
     public function archiveLocation(array $pathParams = [], array $params = []): object

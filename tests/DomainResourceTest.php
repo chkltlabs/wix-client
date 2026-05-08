@@ -19,7 +19,7 @@ class DomainResourceTest extends TestCase
     {
         $wix = $this->getWixClient();
 
-        $response = $wix->members->get('v1/members?status=ACTIVE', ['limit' => 5]);
+        $response = $wix->members->listMembersV1Members([], ['status' => 'ACTIVE', 'limit' => 5]);
 
         self::assertSame('GET', $response->method);
         self::assertSame('/members/v1/members', $response->path);
@@ -33,7 +33,7 @@ class DomainResourceTest extends TestCase
 
         self::assertInstanceOf(Ecom::class, $wix->ecom);
 
-        $response = $wix->ecom->post('v1/orders/query', [
+        $response = $wix->ecom->queryDiscountRules([], [
             'query' => [
                 'paging' => [
                     'limit' => 10,
@@ -42,7 +42,7 @@ class DomainResourceTest extends TestCase
         ]);
 
         self::assertSame('POST', $response->method);
-        self::assertSame('/ecom/v1/orders/query', $response->path);
+        self::assertSame('/ecom/v1/discount-rules/query', $response->path);
         self::assertSame(10, $response->params->query->paging->limit);
     }
 }

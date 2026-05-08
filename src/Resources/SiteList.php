@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class SiteList extends Domain
+class SiteList extends AbstractResource
 {
     protected string $segment = 'site-list';
 
@@ -20,7 +20,7 @@ class SiteList extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'site-list/' . ltrim($path, '/'), $params);
     }
 
     public function countSites(array $pathParams = [], array $params = []): object

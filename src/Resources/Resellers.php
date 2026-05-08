@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class Resellers extends Domain
+class Resellers extends AbstractResource
 {
     protected string $segment = 'resellers';
 
@@ -20,7 +20,7 @@ class Resellers extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'resellers/' . ltrim($path, '/'), $params);
     }
 
     public function adjustProductInstanceSpecifications(array $pathParams = [], array $params = []): object

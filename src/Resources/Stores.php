@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class Stores extends Domain
+class Stores extends AbstractResource
 {
     protected string $segment = 'stores';
 
@@ -20,7 +20,7 @@ class Stores extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'stores/' . ltrim($path, '/'), $params);
     }
 
     public function bulkCreateCoupons(array $pathParams = [], array $params = []): object

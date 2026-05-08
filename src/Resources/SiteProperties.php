@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class SiteProperties extends Domain
+class SiteProperties extends AbstractResource
 {
     protected string $segment = 'site-properties';
 
@@ -20,7 +20,7 @@ class SiteProperties extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'site-properties/' . ltrim($path, '/'), $params);
     }
 
     public function read(array $pathParams = [], array $params = []): object

@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class Forum extends Domain
+class Forum extends AbstractResource
 {
     protected string $segment = 'forum';
 
@@ -20,7 +20,7 @@ class Forum extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'forum/' . ltrim($path, '/'), $params);
     }
 
     public function getCategory(array $pathParams = [], array $params = []): object

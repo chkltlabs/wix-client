@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class Bookings extends Domain
+class Bookings extends AbstractResource
 {
     protected string $segment = 'bookings';
 
@@ -20,7 +20,7 @@ class Bookings extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'bookings/' . ltrim($path, '/'), $params);
     }
 
     public function getAttendance(array $pathParams = [], array $params = []): object

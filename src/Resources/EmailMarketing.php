@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class EmailMarketing extends Domain
+class EmailMarketing extends AbstractResource
 {
     protected string $segment = 'email-marketing';
 
@@ -20,7 +20,7 @@ class EmailMarketing extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'email-marketing/' . ltrim($path, '/'), $params);
     }
 
     public function archive(array $pathParams = [], array $params = []): object

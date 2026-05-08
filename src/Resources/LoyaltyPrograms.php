@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class LoyaltyPrograms extends Domain
+class LoyaltyPrograms extends AbstractResource
 {
     protected string $segment = 'loyalty-programs';
 
@@ -20,7 +20,7 @@ class LoyaltyPrograms extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'loyalty-programs/' . ltrim($path, '/'), $params);
     }
 
     public function activateLoyaltyProgram(array $pathParams = [], array $params = []): object

@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class EventsPolicies extends Domain
+class EventsPolicies extends AbstractResource
 {
     protected string $segment = 'events-policies';
 
@@ -20,7 +20,7 @@ class EventsPolicies extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'events-policies/' . ltrim($path, '/'), $params);
     }
 
     public function createPolicy(array $pathParams = [], array $params = []): object

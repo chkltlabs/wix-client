@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class Progallery extends Domain
+class Progallery extends AbstractResource
 {
     protected string $segment = 'progallery';
 
@@ -20,7 +20,7 @@ class Progallery extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'progallery/' . ltrim($path, '/'), $params);
     }
 
     public function createGallery(array $pathParams = [], array $params = []): object

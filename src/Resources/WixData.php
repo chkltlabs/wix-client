@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class WixData extends Domain
+class WixData extends AbstractResource
 {
     protected string $segment = 'wix-data';
 
@@ -20,7 +20,7 @@ class WixData extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'wix-data/' . ltrim($path, '/'), $params);
     }
 
     public function aggregateDataItems(array $pathParams = [], array $params = []): object

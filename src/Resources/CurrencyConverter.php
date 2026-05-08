@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class CurrencyConverter extends Domain
+class CurrencyConverter extends AbstractResource
 {
     protected string $segment = 'currency_converter';
 
@@ -20,7 +20,7 @@ class CurrencyConverter extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'currency_converter/' . ltrim($path, '/'), $params);
     }
 
     public function conversionRate(array $pathParams = [], array $params = []): object

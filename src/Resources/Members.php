@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class Members extends Domain
+class Members extends AbstractResource
 {
     protected string $segment = 'members';
 
@@ -20,7 +20,7 @@ class Members extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'members/' . ltrim($path, '/'), $params);
     }
 
     public function getActivityCounters(array $pathParams = [], array $params = []): object

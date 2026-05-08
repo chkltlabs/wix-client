@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class PromoteSeoTxtFileServer extends Domain
+class PromoteSeoTxtFileServer extends AbstractResource
 {
     protected string $segment = 'promote-seo-txt-file-server';
 
@@ -20,7 +20,7 @@ class PromoteSeoTxtFileServer extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'promote-seo-txt-file-server/' . ltrim($path, '/'), $params);
     }
 
     public function appendAdsTxt(array $pathParams = [], array $params = []): object

@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class SocialGroups extends Domain
+class SocialGroups extends AbstractResource
 {
     protected string $segment = 'social-groups';
 
@@ -20,7 +20,7 @@ class SocialGroups extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'social-groups/' . ltrim($path, '/'), $params);
     }
 
     public function addGroupMembers(array $pathParams = [], array $params = []): object

@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class Ecom extends Domain
+class Ecom extends AbstractResource
 {
     protected string $segment = 'ecom';
 
@@ -20,7 +20,7 @@ class Ecom extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'ecom/' . ltrim($path, '/'), $params);
     }
 
     public function getAbandonedCheckout(array $pathParams = [], array $params = []): object

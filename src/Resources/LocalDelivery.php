@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class LocalDelivery extends Domain
+class LocalDelivery extends AbstractResource
 {
     protected string $segment = 'local-delivery';
 
@@ -20,7 +20,7 @@ class LocalDelivery extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'local-delivery/' . ltrim($path, '/'), $params);
     }
 
     public function businessStatus(array $pathParams = [], array $params = []): object

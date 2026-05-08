@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient\Resources;
 
 use UnexpectedValueException;
 
-class PricingPlans extends Domain
+class PricingPlans extends AbstractResource
 {
     protected string $segment = 'pricing-plans';
 
@@ -20,7 +20,7 @@ class PricingPlans extends Domain
             }
         }
 
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest($httpMethod, 'pricing-plans/' . ltrim($path, '/'), $params);
     }
 
     public function archivePlan(array $pathParams = [], array $params = []): object
