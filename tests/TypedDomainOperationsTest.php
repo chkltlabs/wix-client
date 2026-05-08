@@ -75,7 +75,7 @@ class TypedDomainOperationsTest extends TestCase
     {
         $wix = $this->getWixClient();
 
-        $response = $wix->automations->reportEvent([], ['event' => ['id' => 'evt_1']]);
+        $response = $wix->automations->reportEvent(['event' => ['id' => 'evt_1']]);
 
         self::assertSame('POST', $response->method);
         self::assertSame('/automations/v1/events/report', $response->path);
@@ -86,10 +86,21 @@ class TypedDomainOperationsTest extends TestCase
     {
         $wix = $this->getWixClient();
 
-        $response = $wix->notifications->notify([], ['notification' => ['title' => 'Test']]);
+        $response = $wix->notifications->notify(['notification' => ['title' => 'Test']]);
 
         self::assertSame('POST', $response->method);
         self::assertSame('/notifications/v3/notify', $response->path);
         self::assertSame('Test', $response->params->notification->title);
+    }
+
+    public function test_site_actions_typed_operation_uses_expected_path(): void
+    {
+        $wix = $this->getWixClient();
+
+        $response = $wix->site_actions->bulkDeleteSite(['siteIds' => ['site-1']]);
+
+        self::assertSame('POST', $response->method);
+        self::assertSame('/site-actions/v1/bulk/sites/delete', $response->path);
+        self::assertSame('site-1', $response->params->siteIds[0]);
     }
 }

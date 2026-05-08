@@ -2,30 +2,11 @@
 
 namespace Chkltlabs\WixClient\Resources;
 
-use UnexpectedValueException;
-
-class Notifications extends Domain
+class Notifications extends AbstractResource
 {
-    protected string $segment = 'notifications';
-
-    private function executeOperation(string $httpMethod, string $path, array $pathParams = [], array $params = []): object
+    public function notify(array $params = []): object
     {
-        if (preg_match_all('/\{([^}]+)\}/', $path, $matches) > 0 && !empty($matches[1])) {
-            foreach ($matches[1] as $placeholder) {
-                $pathParamKey = explode('=', $placeholder)[0];
-                if (!array_key_exists($pathParamKey, $pathParams)) {
-                    throw new UnexpectedValueException('Missing required path param: ' . $pathParamKey);
-                }
-                $path = str_replace('{' . $placeholder . '}', rawurlencode((string) $pathParams[$pathParamKey]), $path);
-            }
-        }
-
-        return $this->request($httpMethod, $path, $params);
-    }
-
-    public function notify(array $pathParams = [], array $params = []): object
-    {
-        return $this->executeOperation('post', 'v3/notify', $pathParams, $params);
+        return $this->sendRequest('post', 'notifications/v3/notify', $params);
     }
 
 }
