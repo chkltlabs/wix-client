@@ -2,55 +2,36 @@
 
 namespace Chkltlabs\WixClient\Resources;
 
-use UnexpectedValueException;
-
-class Apps extends Domain
+class Apps extends AbstractResource
 {
-    protected string $segment = 'apps';
-
-    private function executeOperation(string $httpMethod, string $path, array $pathParams = [], array $params = []): object
+    public function embedScript(array $params = []): object
     {
-        if (preg_match_all('/\{([^}]+)\}/', $path, $matches) > 0 && !empty($matches[1])) {
-            foreach ($matches[1] as $placeholder) {
-                $pathParamKey = explode('=', $placeholder)[0];
-                if (!array_key_exists($pathParamKey, $pathParams)) {
-                    throw new UnexpectedValueException('Missing required path param: ' . $pathParamKey);
-                }
-                $path = str_replace('{' . $placeholder . '}', rawurlencode((string) $pathParams[$pathParamKey]), $path);
-            }
-        }
-
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest('post', 'apps/v1/scripts', $params);
     }
 
-    public function embedScript(array $pathParams = [], array $params = []): object
+    public function getAppInstance(array $params = []): object
     {
-        return $this->executeOperation('post', 'v1/scripts', $pathParams, $params);
+        return $this->sendRequest('get', 'apps/v1/instance', $params);
     }
 
-    public function getAppInstance(array $pathParams = [], array $params = []): object
+    public function getEmbeddedScript(array $params = []): object
     {
-        return $this->executeOperation('get', 'v1/instance', $pathParams, $params);
+        return $this->sendRequest('get', 'apps/v1/scripts', $params);
     }
 
-    public function getEmbeddedScript(array $pathParams = [], array $params = []): object
+    public function getPurchaseHistory(array $params = []): object
     {
-        return $this->executeOperation('get', 'v1/scripts', $pathParams, $params);
+        return $this->sendRequest('get', 'apps/v1/checkout/history', $params);
     }
 
-    public function getPurchaseHistory(array $pathParams = [], array $params = []): object
+    public function getUrl(array $params = []): object
     {
-        return $this->executeOperation('get', 'v1/checkout/history', $pathParams, $params);
+        return $this->sendRequest('post', 'apps/v1/checkout', $params);
     }
 
-    public function getUrl(array $pathParams = [], array $params = []): object
+    public function sendBIEvent(array $params = []): object
     {
-        return $this->executeOperation('post', 'v1/checkout', $pathParams, $params);
-    }
-
-    public function sendBIEvent(array $pathParams = [], array $params = []): object
-    {
-        return $this->executeOperation('post', 'v1/bi-event', $pathParams, $params);
+        return $this->sendRequest('post', 'apps/v1/bi-event', $params);
     }
 
 }

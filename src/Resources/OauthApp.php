@@ -2,55 +2,36 @@
 
 namespace Chkltlabs\WixClient\Resources;
 
-use UnexpectedValueException;
-
-class OauthApp extends Domain
+class OauthApp extends AbstractResource
 {
-    protected string $segment = 'oauth-app';
-
-    private function executeOperation(string $httpMethod, string $path, array $pathParams = [], array $params = []): object
+    public function createOAuthApp(array $params = []): object
     {
-        if (preg_match_all('/\{([^}]+)\}/', $path, $matches) > 0 && !empty($matches[1])) {
-            foreach ($matches[1] as $placeholder) {
-                $pathParamKey = explode('=', $placeholder)[0];
-                if (!array_key_exists($pathParamKey, $pathParams)) {
-                    throw new UnexpectedValueException('Missing required path param: ' . $pathParamKey);
-                }
-                $path = str_replace('{' . $placeholder . '}', rawurlencode((string) $pathParams[$pathParamKey]), $path);
-            }
-        }
-
-        return $this->request($httpMethod, $path, $params);
+        return $this->sendRequest('post', 'oauth-app/v1/oauth-apps', $params);
     }
 
-    public function createOAuthApp(array $pathParams = [], array $params = []): object
+    public function deleteOAuthApp(string $oAuthAppId, array $params = []): object
     {
-        return $this->executeOperation('post', 'v1/oauth-apps', $pathParams, $params);
+        return $this->sendRequest('delete', "oauth-app/v1/oauth-apps/{$oAuthAppId}", $params);
     }
 
-    public function deleteOAuthApp(array $pathParams = [], array $params = []): object
+    public function generateOAuthAppSecret(string $oAuthAppId, array $params = []): object
     {
-        return $this->executeOperation('delete', 'v1/oauth-apps/{oAuthAppId}', $pathParams, $params);
+        return $this->sendRequest('post', "oauth-app/v1/oauth-apps/{$oAuthAppId}/generate-secret", $params);
     }
 
-    public function generateOAuthAppSecret(array $pathParams = [], array $params = []): object
+    public function getOAuthApp(string $oAuthAppId, array $params = []): object
     {
-        return $this->executeOperation('post', 'v1/oauth-apps/{oAuthAppId}/generate-secret', $pathParams, $params);
+        return $this->sendRequest('get', "oauth-app/v1/oauth-apps/{$oAuthAppId}", $params);
     }
 
-    public function getOAuthApp(array $pathParams = [], array $params = []): object
+    public function queryOAuthApps(array $params = []): object
     {
-        return $this->executeOperation('get', 'v1/oauth-apps/{oAuthAppId}', $pathParams, $params);
+        return $this->sendRequest('post', 'oauth-app/v1/oauth-apps/query', $params);
     }
 
-    public function queryOAuthApps(array $pathParams = [], array $params = []): object
+    public function updateOAuthApp(string $oAuthAppId, array $params = []): object
     {
-        return $this->executeOperation('post', 'v1/oauth-apps/query', $pathParams, $params);
-    }
-
-    public function updateOAuthApp(array $pathParams = [], array $params = []): object
-    {
-        return $this->executeOperation('patch', 'v1/oauth-apps/{oAuthApp.id}', $pathParams, $params);
+        return $this->sendRequest('patch', "oauth-app/v1/oauth-apps/{$oAuthAppId}", $params);
     }
 
 }

@@ -103,4 +103,36 @@ class TypedDomainOperationsTest extends TestCase
         self::assertSame('/site-actions/v1/bulk/sites/delete', $response->path);
         self::assertSame('site-1', $response->params->siteIds[0]);
     }
+
+    public function test_apps_handcrafted_resource_uses_expected_paths(): void
+    {
+        $wix = $this->getWixClient();
+
+        $response = $wix->apps->getAppInstance(['instance' => 'abc']);
+
+        self::assertSame('GET', $response->method);
+        self::assertSame('/apps/v1/instance', $response->path);
+        self::assertSame('abc', $response->query->instance);
+    }
+
+    public function test_oauth_app_handcrafted_resource_uses_expected_paths(): void
+    {
+        $wix = $this->getWixClient();
+
+        $response = $wix->oauth_app->getOAuthApp('app_123');
+
+        self::assertSame('GET', $response->method);
+        self::assertSame('/oauth-app/v1/oauth-apps/app_123', $response->path);
+    }
+
+    public function test_domain_search_handcrafted_resource_uses_expected_paths(): void
+    {
+        $wix = $this->getWixClient();
+
+        $response = $wix->domain_search->checkDomainAvailability(['query' => 'example.com']);
+
+        self::assertSame('GET', $response->method);
+        self::assertSame('/domain-search/v2/check-domain-availability', $response->path);
+        self::assertSame('example.com', $response->query->query);
+    }
 }
