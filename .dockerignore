@@ -1,0 +1,5 @@
+.git
+vendor
+.idea
+.DS_Store
+tests/_output
