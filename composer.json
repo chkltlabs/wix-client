@@ -19,8 +19,8 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.0",
-        "vimeo/psalm": "^5.15"
+        "phpunit/phpunit": "^10.0",
+        "vimeo/psalm": "^6.0"
     },
     "authors": [
         {
