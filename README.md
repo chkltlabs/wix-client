@@ -21,6 +21,10 @@ If you inject a custom HTTP client, no code changes are required. If you referen
 
 Shuttle 2.x no longer accepts a configuration array in its constructor; pass dependencies as named constructor arguments instead.
 
+## Continuous Integration
+
+GitHub Actions runs the full PHPUnit suite on PHP 8.2, 8.3, and 8.4. PHP 8.2 also runs with `--prefer-lowest` to verify compatibility with minimum allowed dependency versions.
+
 ## Local Testing with Docker
 To run tests with pinned versions (without relying on host PHP/composer), use Docker:
 ```
