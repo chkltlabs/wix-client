@@ -6,6 +6,21 @@ PHP implementation of Wix API as an SDK.
 composer require chkltlabs/wix-client
 ```
 
+Requires PHP 8.2+.
+
+### Upgrading to 1.0
+
+Version 1.0 drops support for `nimbly/shuttle` 0.x, `psr/http-message` 1.x, and PHP versions below 8.2 to align with Laravel 13.
+
+If you inject a custom HTTP client, no code changes are required. If you reference Shuttle or Capsule classes directly, update imports:
+
+- `Shuttle\Shuttle` → `Nimbly\Shuttle\Shuttle`
+- `Shuttle\Handler\MockHandler` → `Nimbly\Shuttle\Handler\MockHandler`
+- `Capsule\Request` → `Nimbly\Capsule\Request`
+- `Capsule\Response` → `Nimbly\Capsule\Response`
+
+Shuttle 2.x no longer accepts a configuration array in its constructor; pass dependencies as named constructor arguments instead.
+
 ## Local Testing with Docker
 To run tests with pinned versions (without relying on host PHP/composer), use Docker:
 ```

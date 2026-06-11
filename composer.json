@@ -3,9 +3,11 @@
     "description": "A fluent interface for the Wix API",
     "type": "library",
     "require": {
-        "nimbly/shuttle": "^0.4",
+        "php": "^8.2",
+        "nimbly/capsule": "^3.0",
+        "nimbly/shuttle": "^2.0",
         "psr/http-client": "^1.0",
-        "psr/http-message": "^1.0"
+        "psr/http-message": "^2.0"
     },
     "license": "MIT",
     "autoload": {

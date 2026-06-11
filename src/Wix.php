@@ -4,7 +4,7 @@ namespace Chkltlabs\WixClient;
 
 use Chkltlabs\WixClient\Resources\AbstractResource;
 use Chkltlabs\WixClient\Traits\HasCachedResources;
-use Shuttle\Shuttle;
+use Nimbly\Shuttle\Shuttle;
 use Psr\Http\Client\ClientInterface;
 
 /**

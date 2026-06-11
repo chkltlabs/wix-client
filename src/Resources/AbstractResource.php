@@ -3,11 +3,11 @@
 namespace Chkltlabs\WixClient\Resources;
 
 use Chkltlabs\WixClient\WixRequestException;
-use Capsule\Request;
+use Nimbly\Capsule\Request;
+use Nimbly\Shuttle\Shuttle;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Shuttle\Shuttle;
 use UnexpectedValueException;
 
 abstract class AbstractResource
